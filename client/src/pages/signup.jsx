@@ -1,10 +1,10 @@
 import { useTheme } from "../context/ThemeContext";
 
-function Login() {
+function Signup() {
   const { darkMode, toggleTheme } = useTheme();
 
-  const goToSignup = () => {
-    window.history.pushState({}, "", "/signup");
+  const goToLogin = () => {
+    window.history.pushState({}, "", "/login");
     window.dispatchEvent(new PopStateEvent("popstate"));
   };
 
@@ -53,6 +53,7 @@ function Login() {
             </span>
           </h1>
 
+          {/* Theme Button */}
           <button
             onClick={toggleTheme}
             className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg transition duration-300 hover:scale-110 ${
@@ -66,18 +67,19 @@ function Login() {
         </div>
       </nav>
 
-      {/* Login */}
-      <main className="relative z-10 flex min-h-[calc(100vh-81px)] items-center justify-center px-6">
+      {/* Signup */}
+      <main className="relative z-10 flex min-h-[calc(100vh-81px)] items-center justify-center px-6 py-8">
 
+        {/* Signup Card */}
         <div
-          className={`w-full max-w-md rounded-3xl border p-8 shadow-2xl animate-card transition-colors duration-500 ${
+          className={`w-full max-w-lg rounded-3xl border p-8 shadow-2xl animate-card transition-colors duration-500 ${
             darkMode
               ? "border-white/10 bg-[#111827] shadow-blue-500/10"
               : "border-slate-200 bg-white shadow-blue-100"
           }`}
         >
           <h2 className="text-3xl font-extrabold">
-            Login
+            Create Account
           </h2>
 
           <p
@@ -85,17 +87,63 @@ function Login() {
               darkMode ? "text-slate-400" : "text-slate-500"
             }`}
           >
-            Welcome back! Please enter your details.
+            Create your CodeMentor account and start learning.
           </p>
 
+          {/* First + Last Name */}
+          <div className="mt-7 grid gap-4 sm:grid-cols-2">
+
+            {/* First Name */}
+            <div>
+              <label
+                className={`text-sm font-semibold ${
+                  darkMode ? "text-slate-200" : "text-slate-700"
+                }`}
+              >
+                First Name
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter first name"
+                className={`mt-2 w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:scale-[1.02] focus:border-blue-500 ${
+                  darkMode
+                    ? "border-white/10 bg-[#0b1220] text-white placeholder:text-slate-500"
+                    : "border-slate-200 bg-slate-50 placeholder:text-slate-400"
+                }`}
+              />
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <label
+                className={`text-sm font-semibold ${
+                  darkMode ? "text-slate-200" : "text-slate-700"
+                }`}
+              >
+                Last Name
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter last name"
+                className={`mt-2 w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:scale-[1.02] focus:border-purple-500 ${
+                  darkMode
+                    ? "border-white/10 bg-[#0b1220] text-white placeholder:text-slate-500"
+                    : "border-slate-200 bg-slate-50 placeholder:text-slate-400"
+                }`}
+              />
+            </div>
+          </div>
+
           {/* Email */}
-          <div className="mt-7">
+          <div className="mt-5">
             <label
               className={`text-sm font-semibold ${
                 darkMode ? "text-slate-200" : "text-slate-700"
               }`}
             >
-              Email
+              Email Address
             </label>
 
             <input
@@ -121,7 +169,7 @@ function Login() {
 
             <input
               type="password"
-              placeholder="Enter your password"
+              placeholder="Create a password"
               className={`mt-2 w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:scale-[1.02] focus:border-blue-500 ${
                 darkMode
                   ? "border-white/10 bg-[#0b1220] text-white placeholder:text-slate-500"
@@ -130,34 +178,48 @@ function Login() {
             />
           </div>
 
-          {/* Forgot */}
-          <div className="mt-3 text-right">
-            <button className="text-xs font-semibold text-blue-600 hover:text-purple-500 hover:underline">
-              Forgot password?
-            </button>
+          {/* Confirm Password */}
+          <div className="mt-5">
+            <label
+              className={`text-sm font-semibold ${
+                darkMode ? "text-slate-200" : "text-slate-700"
+              }`}
+            >
+              Confirm Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Confirm your password"
+              className={`mt-2 w-full rounded-xl border px-4 py-3.5 outline-none transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:scale-[1.02] focus:border-purple-500 ${
+                darkMode
+                  ? "border-white/10 bg-[#0b1220] text-white placeholder:text-slate-500"
+                  : "border-slate-200 bg-slate-50 placeholder:text-slate-400"
+              }`}
+            />
           </div>
 
-          {/* Login Button */}
-          <button className="relative mt-6 w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-95">
+          {/* Signup Button */}
+          <button className="relative mt-7 w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-95">
             <span className="relative z-10">
-              Login
+              Sign Up
             </span>
 
             <span className="absolute left-[-100%] top-0 h-full w-1/2 skew-x-[-20deg] bg-white/30 animate-shine" />
           </button>
 
-          {/* Signup */}
+          {/* Login Link */}
           <p
             className={`mt-6 text-center text-sm ${
               darkMode ? "text-slate-400" : "text-slate-500"
             }`}
           >
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <button
-              onClick={goToSignup}
+              onClick={goToLogin}
               className="font-bold text-blue-600 hover:text-purple-500 hover:underline"
             >
-              Sign Up
+              Sign In
             </button>
           </p>
         </div>
@@ -169,6 +231,7 @@ function Login() {
           0%, 100% {
             transform: translate(0, 0) scale(1);
           }
+
           50% {
             transform: translate(80px, 50px) scale(1.15);
           }
@@ -178,6 +241,7 @@ function Login() {
           0%, 100% {
             transform: translate(0, 0) scale(1);
           }
+
           50% {
             transform: translate(-70px, -50px) scale(1.15);
           }
@@ -188,6 +252,7 @@ function Login() {
             opacity: 0.4;
             transform: scale(1);
           }
+
           50% {
             opacity: 0.8;
             transform: scale(1.25);
@@ -198,6 +263,7 @@ function Login() {
           0%, 100% {
             transform: translateY(0);
           }
+
           50% {
             transform: translateY(-7px);
           }
@@ -207,6 +273,7 @@ function Login() {
           0% {
             left: -100%;
           }
+
           100% {
             left: 150%;
           }
@@ -236,4 +303,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
